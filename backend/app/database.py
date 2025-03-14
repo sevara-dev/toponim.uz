@@ -19,9 +19,12 @@ if DATABASE_URL.startswith("postgres://"):
 
 # SSL va boshqa ulanish parametrlari
 connect_args = {
-    "sslmode": "verify-full",
-    "connect_timeout": 60,
-    "application_name": "toponim_app"
+    "sslmode": "require",
+    "connect_timeout": 30,
+    "keepalives": 1,
+    "keepalives_idle": 30,
+    "keepalives_interval": 10,
+    "keepalives_count": 5
 }
 
 # Engine yaratish
