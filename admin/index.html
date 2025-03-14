@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toponim.uz - Admin Panel</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Mobil menyu tugmasi -->
+        <button class="menu-toggle" id="menuToggle">
+            <span class="material-icons">menu</span>
+        </button>
+        <!-- Chap panel -->
+        <div class="sidebar">
+            <div class="logo">
+                <h2>Toponim.uz</h2>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active" data-page="dashboard">
+                        <span class="material-icons">dashboard</span>
+                        Bosh sahifa
+                    </li>
+                    <li data-page="toponims">
+                        <span class="material-icons">place</span>
+                        Toponimlar
+                    </li>
+                    <li data-page="messages">
+                        <span class="material-icons">mail</span>
+                        Xabarlar
+                        <span class="badge" id="unreadMessages">0</span>
+                    </li>
+                    <li data-page="users">
+                        <span class="material-icons">people</span>
+                        Foydalanuvchilar
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Asosiy kontent -->
+        <div class="main-content">
+            <!-- Yuqori panel -->
+            <header>
+                <div class="search-bar">
+                    <span class="material-icons">search</span>
+                    <input type="text" placeholder="Qidirish...">
+                </div>
+                <div class="user-menu">
+                    <span class="material-icons">account_circle</span>
+                    <span id="userName">Admin</span>
+                    <button id="logoutBtn">Chiqish</button>
+                </div>
+            </header>
+
+            <!-- Kontentlar -->
+            <div class="content" id="dashboard">
+                <h2>Statistika</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="material-icons">place</span>
+                        <h3>Toponimlar</h3>
+                        <p id="toponimCount">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <span class="material-icons">mail</span>
+                        <h3>Yangi xabarlar</h3>
+                        <p id="messageCount">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <span class="material-icons">people</span>
+                        <h3>Foydalanuvchilar</h3>
+                        <p id="userCount">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content hidden" id="toponims">
+                <h2>Toponimlar</h2>
+                <button id="addToponimBtn" class="add-btn">
+                    <span class="material-icons">add</span>
+                    Yangi toponim
+                </button>
+                <div class="table-container">
+                    <table id="toponimTable">
+                        <thead>
+                            <tr>
+                                <th>Nomi</th>
+                                <th>Turi</th>
+                                <th>Tuman</th>
+                                <th>Koordinatalar</th>
+                                <th>Yaratilgan sana</th>
+                                <th>Amallar</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content hidden" id="messages">
+                <h2>Xabarlar</h2>
+                <div class="table-container">
+                    <table id="messageTable">
+                        <thead>
+                            <tr>
+                                <th>Kimdan</th>
+                                <th>Mavzu</th>
+                                <th>Sana</th>
+                                <th>Holat</th>
+                                <th>Amallar</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content hidden" id="users">
+                <h2>Foydalanuvchilar</h2>
+                <button id="addUserBtn" class="add-btn">
+                    <span class="material-icons">person_add</span>
+                    Yangi foydalanuvchi
+                </button>
+                <div class="table-container">
+                    <table id="userTable">
+                        <thead>
+                            <tr>
+                                <th>Login</th>
+                                <th>Email</th>
+                                <th>Holat</th>
+                                <th>Amallar</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal oynalar -->
+    <div id="toponimModal" class="modal">
+        <div class="modal-content">
+            <h3>Yangi toponim qo'shish</h3>
+            <form id="toponimForm">
+                <div class="form-group">
+                    <label>Nomi:</label>
+                    <input type="text" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label>Turi:</label>
+                    <select name="type" required>
+                        <option value="">Toponim turini tanlang</option>
+                        <option value="Shahar">Shahar</option>
+                        <option value="Shaharcha">Shaharcha</option>
+                        <option value="Qishloq">Qishloq</option>
+                        <option value="Aholi punkti">Aholi punkti</option>
+                        <option value="Mahalla">Mahalla</option>
+                        <option value="Ko'cha">Ko'cha</option>
+                        <option value="Marmar koni">Marmar koni</option>
+                        <option value="Oltin koni">Oltin koni</option>
+                        <option value="Volfram koni">Volfram koni</option>
+                        <option value="Urochishe">Urochishe</option>
+                        <option value="Do'nglik">Do'nglik</option>
+                        <option value="Quruq o'zan">Quruq o'zan</option>
+                        <option value="Tog'">Tog'</option>
+                        <option value="Tog'lar">Tog'lar</option>
+                        <option value="Daryo">Daryo</option>
+                        <option value="Buloq">Buloq</option>
+                        <option value="Dovon">Dovon</option>
+                        <option value="Ko'l">Ko'l</option>
+                        <option value="Ko'chki">Ko'chki</option>
+                        <option value="Qo'rg'on">Qo'rg'on</option>
+                        <option value="Tog' tizmasi">Tog' tizmasi</option>
+                        <option value="Yuvilma o'yiq">Yuvilma o'yiq</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Viloyat:</label>
+                    <select name="region" id="regionSelect" required>
+                        <option value="">Viloyatni tanlang</option>
+                        <option value="andijon">Andijon viloyati</option>
+                        <option value="buxoro">Buxoro viloyati</option>
+                        <option value="fargona">Farg'ona viloyati</option>
+                        <option value="jizzax">Jizzax viloyati</option>
+                        <option value="xorazm">Xorazm viloyati</option>
+                        <option value="namangan">Namangan viloyati</option>
+                        <option value="navoiy">Navoiy viloyati</option>
+                        <option value="qashqadaryo">Qashqadaryo viloyati</option>
+                        <option value="qoraqalpogiston">Qoraqalpog'iston Respublikasi</option>
+                        <option value="samarqand">Samarqand viloyati</option>
+                        <option value="sirdaryo">Sirdaryo viloyati</option>
+                        <option value="surxondaryo">Surxondaryo viloyati</option>
+                        <option value="toshkent">Toshkent viloyati</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Tuman:</label>
+                    <select name="district" id="districtSelect" required disabled>
+                        <option value="">Tumanni tanlang</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Kenglik:</label>
+                    <input type="number" name="latitude" step="0.000001" required>
+                </div>
+                <div class="form-group">
+                    <label>Uzunlik:</label>
+                    <input type="number" name="longitude" step="0.000001" required>
+                </div>
+                <div class="form-group">
+                    <label>Tashkil topgan yili:</label>
+                    <input type="text" name="established">
+                </div>
+                <div class="form-group">
+                    <label>Oldingi nomi:</label>
+                    <input type="text" name="previous_name">
+                </div>
+                <div class="form-group">
+                    <label>Ma'nosi:</label>
+                    <textarea name="meaning"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="submit">Saqlash</button>
+                    <button type="button" class="cancel">Bekor qilish</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="messageModal" class="modal">
+        <div class="modal-content">
+            <h3>Xabar</h3>
+            <div id="messageDetails"></div>
+            <div class="form-actions">
+                <button type="button" class="cancel">Yopish</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="userModal" class="modal">
+        <div class="modal-content">
+            <h3>Yangi foydalanuvchi qo'shish</h3>
+            <form id="userForm">
+                <div class="form-group">
+                    <label>Login:</label>
+                    <input type="text" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Parol:</label>
+                    <input type="password" name="password" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit">Saqlash</button>
+                    <button type="button" class="cancel">Bekor qilish</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Mobil menyu funksionalligi
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.querySelector('.sidebar');
+        const mainContent = document.querySelector('.main-content');
+
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+        });
+
+        // Asosiy kontentga bosganda menyuni yopish
+        mainContent.addEventListener('click', () => {
+            if (window.innerWidth <= 768 && sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+            }
+        });
+
+        // Oyna o'lchamini o'zgartirish
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                sidebar.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html> 

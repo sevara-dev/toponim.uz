@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navoiy Toponimlari</title>
+    
+    <!-- CSS Linklari -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/slicknav.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/animated-headline.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/themify-icons.css">
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="navoiy-viloyati/navoiy-viloyati.css">
+</head>
+<body>
+<!-- ? Preloader Start -->
+<!-- <div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-inner position-relative">
+            <div class="preloader-circle"></div>
+            <div class="preloader-img pere-text">
+                <img src="assets/img/logo/loder.png" alt="">
+            </div>
+        </div>
+    </div>
+</div> -->
+<!-- Preloader Start -->
+<header style="background-color: #1b2181;">
+    <!-- Header Start -->
+    <div class="header-area">
+        <div class="main-header header-sticky">
+            <div class="container-fluid">
+                <div class="menu-wrapper d-flex align-items-center justify-content-between">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <a href="index.html"><img src="assets/img/logo/logo.png" style="height: 70px; width: 250px;" alt=""></a>
+                    </div>
+                    <!-- Main-menu -->
+                    <div class="main-menu f-right d-none d-lg-block">
+                        <nav>
+                            <ul id="navigation">
+                                <li><a href="main.html">Asosiy sahifa</a></li>
+                                <li><a href="news.html">Yangiliklar</a></li> 
+                                <li><a href="library.html">Kutubxona</a>
+                                    <ul class="submenu">
+                                        <li><a href="maqolalar.html">Maqolalar</a></li>
+                                        <li><a href="listing.html">Kitoblar</a></li> 
+                                    </ul>
+                                </li>
+                            
+                                <li><a href="contact.html">Bog'lanish</a></li>
+                            </ul>
+                        </nav>
+                    </div>          
+                    <!-- Header-btn -->
+                    <div class="header-btns d-none d-lg-block f-right">
+                        <a href="admin/login.html" class="mr-40"><i class="ti-user"></i> Kirish</a>
+                        <a href="register.html" class="btn">Ro'yxatdan o'tish</a>
+                    </div>
+                    <!-- Mobile Menu -->
+                    <div class="col-12">
+                        <div class="mobile_menu d-block d-lg-none"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+</header>
+<h1 class="section-tittle text-center mb-50 mt-50">Navoiy viloyati toponimlarini tadqiq qilamiz!</h1>
+<main>
+    <form action="#" class="search-box mb-100" id="searchForm">
+        <div class="input-form" style="width: 75%;">
+            <input type="text" id="searchInput" placeholder="Qaysi toponimni qidiryapsiz?">
+        </div>
+        <div class="search-form" style="width: 23%;">
+            <button type="submit">
+                <i class="ti-search"></i> Qidirish
+            </button>
+        </div>	
+    </form>	
+
+
+</main>
+
+
+<!-- Map Section -->
+<div class="container my-4">
+  
+    <div id="map"></div>
+</div>
+
+<!-- District Cards Section -->
+<div class="container my-4">
+    <h1 class="text-center mb-4">Navoiy Viloyatining Tumanlari</h1>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card district-card" data-district="Karmana">
+                <img src="navoiy-viloyati/img-navoiy-region/karmana.jpg" class="card-img-top" alt="Karmana">
+                <div class="card-body">
+                    <h5 class="card-title">Karmana tumani</h5>
+                    <p class="card-text">Karmina</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="col-md-3">
+            <div class="card district-card" data-district="Zarafshon">
+                <img src="navoiy-viloyati/img-navoiy-region/uchquduq.jpg" class="card-img-top" alt="Zarafshon">
+                <div class="card-body">
+                    <h5 class="card-title">Zarafshon tumani</h5>
+                    <p class="card-text">Zarafshon(fors, zar – oltin, afshon – sochuvchi) - zar sochuvchi; tilladek tovlanuvchi; yar-qirovchi, yaltiroq</p>
+                </div>
+            </div>
+        </div> -->
+
+            <div class="col-md-3">
+                <div class="card district-card" data-district="Qiziltepa">
+                    <img src="navoiy-viloyati/img-navoiy-region/karmana.jpg" class="card-img-top" alt="Qiziltepa">
+                    <div class="card-body">
+                        <h5 class="card-title">Qiziltepa tumani</h5>
+                        <p class="card-text">Qiziltepa haqida</p>
+                    </div>
+                </div>
+            </div>
+
+        <div class="col-md-3">
+            <div class="card district-card" data-district="Nurota">
+                <img src="navoiy-viloyati/img-navoiy-region/karmana.jpg" class="card-img-top" alt="Nurota">
+                <div class="card-body">
+                    <a href="navoiy-viloyati/tumanlar/nurota/nurota.html"><h5 class="card-title">Nurota tumani</h5></a>
+                    <p class="card-text">Nurota tumani haqida</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card district-card" data-district="Tomdi">
+                <img src="navoiy-viloyati/img-navoiy-region/karmana.jpg" class="card-img-top" alt="Tomdi">
+                <div class="card-body">
+                    <h5 class="card-title">Tomdi tumani</h5>
+                    <p class="card-text">Tomdi haqida</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- row-2 -->
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card district-card" data-district="Konimex">
+                <img src="navoiy-viloyati/img-navoiy-region/karmana.jpg" class="card-img-top" alt="Konimex">
+                <div class="card-body">
+                    <h5 class="card-title">Konimex tumani</h5>
+                    <p class="card-text">Konimex tumani haqida</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card district-card" data-district="Uchquduq">
+                <img src="navoiy-viloyati/img-navoiy-region/karmana.jpg" class="card-img-top" alt="Uchquduq">
+                <div class="card-body">
+                    <h5 class="card-title">Uchquduq tumani</h5>
+                    <p class="card-text">Uchquduq haqida</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card district-card" data-district="Navbahor">
+                <img src="navoiy-viloyati/img-navoiy-region/karmana.jpg" class="card-img-top" alt="Navbahor">
+                <div class="card-body">
+                    <h5 class="card-title">Navbahor tumani</h5>
+                    <p class="card-text">Navbahor tumani haqida</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card district-card" data-district="Xatirchi">
+                <img src="navoiy-viloyati/img-navoiy-region/karmana.jpg" class="card-img-top" alt="Xatirchi">
+                <div class="card-body">
+                    <h5 class="card-title">Xatirchi tumani</h5>
+                    <p class="card-text">Xatirchi haqida.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- row-3 -->
+   
+</div>
+
+<!-- Footer -->
+<footer class=" bg-light">
+     <!--? Want To work 02-->
+     <section class="wantToWork-area">
+        <div class="container">
+            <div class="wants-wrapper w-padding2">
+                <div class="row justify-content-between">
+                    <div class="col-xl-8 col-lg-8 col-md-7">
+                        <div class="wantToWork-caption wantToWork-caption2">
+                            <img style="height: 90px; width: 350px;" src="assets/img/logo/logo2_footer.png" alt="" class="mb-20">
+                            <p>toponim.uz - O'zbekistonning joy nomlari va toponimika tarixi bo'yicha ma'lumotlarni biz bilan kashf eting. 
+                                Saytimiz orqali turli hududlar va shaharlarning toponimik xaritalari, toponimikaga oid ilmiy tadqiqotlar va kitoblar bilan tanishing.</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-5">
+                        <div class="footer-social f-right sm-left">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Want To work End -->
+    <!--? Want To work 01-->
+    <section class="wantToWork-area">
+        <div class="container">
+            <div class="wants-wrapper">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-xl-7 col-lg-9 col-md-8">
+                        <div class="wantToWork-caption wantToWork-caption2">
+                            <div class="main-menu2">
+                               <nav >
+                                    <ul>
+                                        <li><a href="index.html">Asosiy sahifa</a></li>
+                                        <li><a href="news.html">Yangiliklar</a></li> 
+                                        <li><a href="library.html">Kutubxona</a></li>
+                                        <li><a href="contact.html">Bog'lanish</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Want To work End -->
+</main>
+
+    <div class="footer-wrapper pt-30">
+        <!-- footer-bottom -->
+        <div class="footer-bottom-area">
+            <div class="container">
+                <div class="footer-border">
+                    <div class="row d-flex justify-content-between align-items-center">
+                        <div class="col-xl-10 col-lg-9 ">
+                            <div class="footer-copy-right">
+                               <center> <p style="margin-left: 200px;">
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved<i class="fa fa-heart" aria-hidden="true"></i>
+</p></center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+<!-- Scroll Up -->
+<div id="back-top" >
+    <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+</div>
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script> <!-- Leaflet JS -->
+<script src="navoiy-viloyati/navoiy-viloyati.js"></script>
+
+<script>
+document.getElementById('searchForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const searchText = document.getElementById('searchInput').value;
+    
+    if (!searchText) {
+        return;
+    }
+
+    try {
+        const response = await fetch(`http://localhost:8000/api/search?q=${searchText}&region=navoiy`);
+        const results = await response.json();
+    } catch (error) {
+        console.error('Qidiruv xatosi:', error);
+    }
+});
+
+function displayResults(results) {
+    const resultsContainer = document.getElementById('searchResults');
+    const resultsList = document.getElementById('resultsList');
+    const overlay = document.getElementById('searchOverlay');
+    
+    resultsList.innerHTML = '';
+
+    if (results.length === 0) {
+        resultsList.innerHTML = '<p class="text-center">Hech narsa topilmadi</p>';
+    } else {
+        results.forEach(result => {
+            const resultItem = document.createElement('div');
+            resultItem.className = 'result-item';
+            resultItem.innerHTML = `
+                <h4>${result.name}</h4>
+                <p><strong>Turi:</strong> ${result.type}</p>
+                <p><strong>Tuman:</strong> ${result.district}</p>
+                <p><strong>Viloyat:</strong> ${result.region}</p>
+                ${result.meaning ? `<p><strong>Ma'nosi:</strong> ${result.meaning}</p>` : ''}
+                ${result.established ? `<p><strong>Tashkil topgan yili:</strong> ${result.established}</p>` : ''}
+                ${result.previous_name ? `<p><strong>Oldingi nomi:</strong> ${result.previous_name}</p>` : ''}
+            `;
+            
+            resultItem.addEventListener('click', () => {
+                if (result.district === 'Nurota') {
+                    window.location.href = 'navoiy-viloyati/tumanlar/nurota/nurota.html?toponim=' + result.id;
+                } else {
+                    window.location.href = `navoiy-viloyati.html?toponim=${result.id}`;
+                }
+            });
+            
+            resultsList.appendChild(resultItem);
+        });
+    }
+
+    overlay.style.display = 'block';
+    resultsContainer.style.display = 'block';
+}
+
+// Yopish tugmasi funksionalligi
+document.getElementById('closeResults').addEventListener('click', () => {
+    document.getElementById('searchResults').style.display = 'none';
+    document.getElementById('searchOverlay').style.display = 'none';
+});
+
+// Overlay bosilganda yopish
+document.getElementById('searchOverlay').addEventListener('click', () => {
+    document.getElementById('searchResults').style.display = 'none';
+    document.getElementById('searchOverlay').style.display = 'none';
+});
+
+// Escape tugmasi bosilganda yopish
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        document.getElementById('searchResults').style.display = 'none';
+        document.getElementById('searchOverlay').style.display = 'none';
+    }
+});
+</script>
+<!-- JS here -->
+
+<script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
+<!-- Jquery, Popper, Bootstrap -->
+<script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="./assets/js/popper.min.js"></script>
+<script src="./assets/js/bootstrap.min.js"></script>
+<!-- Jquery Mobile Menu -->
+<script src="./assets/js/jquery.slicknav.min.js"></script>
+
+<!-- Jquery Slick , Owl-Carousel Plugins -->
+<script src="./assets/js/owl.carousel.min.js"></script>
+<script src="./assets/js/slick.min.js"></script>
+<!-- One Page, Animated-HeadLin -->
+<script src="./assets/js/wow.min.js"></script>
+<script src="./assets/js/animated.headline.js"></script>
+<script src="./assets/js/jquery.magnific-popup.js"></script>
+
+<!-- Date Picker -->
+<script src="./assets/js/gijgo.min.js"></script>
+<!-- Nice-select, sticky -->
+<script src="./assets/js/jquery.nice-select.min.js"></script>
+<script src="./assets/js/jquery.sticky.js"></script>
+<!-- Progress -->
+<script src="./assets/js/jquery.barfiller.js"></script>
+
+<!-- counter , waypoint,Hover Direction -->
+<script src="./assets/js/jquery.counterup.min.js"></script>
+<script src="./assets/js/waypoints.min.js"></script>
+<script src="./assets/js/jquery.countdown.min.js"></script>
+<script src="./assets/js/hover-direction-snake.min.js"></script>
+
+<!-- contact js -->
+<script src="./assets/js/contact.js"></script>
+<script src="./assets/js/jquery.form.js"></script>
+<script src="./assets/js/jquery.validate.min.js"></script>
+<script src="./assets/js/mail-script.js"></script>
+<script src="./assets/js/jquery.ajaxchimp.min.js"></script>
+
+<!-- Jquery Plugins, main Jquery -->	
+<script src="./assets/js/plugins.js"></script>
+<script src="./assets/js/main.js"></script>
+</body>
+</html>

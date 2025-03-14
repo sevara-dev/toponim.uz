@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nurota Tumani Toponimlari</title>
+    <!-- Link to Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="nurota.css">  <!-- Custom CSS -->
+</head>
+<body>
+
+    <div id="map"></div> <!-- Leaflet map container -->
+
+    <!-- Left Sidebar: Information about Nurota Tumani -->
+    <div class="sidebar" id="leftSidebar">
+        <h3>Nurota Tumani</h3>
+        <img src="nurata1.jpg" alt="Nurota Tumani" class="sidebar-img">
+        <p><strong>Maydon:</strong> 15,000 km²</p>
+        <p><strong>Aholi:</strong> 350,000</p>
+        <p><strong>Qo'shimcha Ma'lumotlar:</strong> Nurota Tumani tarixiy va madaniy ahamiyatga ega bo'lgan hududlardan biridir.</p>
+    </div>
+
+    <!-- Right Sidebar -->
+    <div class="sidebar" id="rightSidebar">
+        <div class="search-container">
+            <input type="text" id="toponymSearch" placeholder="Toponim qidirish..." class="search-input">
+            <button id="clearSearch" class="clear-search" aria-label="Qidiruvni tozalash">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul id="toponymList"></ul>
+    </div>
+
+    <!-- Button to toggle right sidebar -->
+    <button id="toggleRightSidebar"></button>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="nurota.js"></script> <!-- Custom JavaScript -->
+
+
+</body>
+</html>

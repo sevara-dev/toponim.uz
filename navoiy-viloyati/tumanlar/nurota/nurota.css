@@ -1,0 +1,331 @@
+/* Make the map full-screen */
+#map {
+    height: 100vh;
+    width: calc(100% - 300px); /* Adjust width to account for left sidebar */
+    margin-left: 300px; /* Offset map to the right */
+    transition: width 0.3s ease-in-out, margin-left 0.3s ease-in-out; /* Smooth transition for width and margin */
+}
+
+/* Sidebar styling */
+.sidebar {
+    width: 260px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    overflow-y: auto;
+    z-index: 999;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out; /* Smooth transition for sliding */
+}
+
+/* Sidebar left (Nurota Tumani info) */
+#leftSidebar {
+    left: 0;
+    transform: translateX(0); /* Initially visible */
+}
+
+#leftSidebar h3 {
+    text-align: center;
+    color: #072366;
+}
+
+/* Sidebar right (Toponym List) */
+#rightSidebar {
+    right: 10px;
+    top: 50px; /* Position 50px from the top */
+    bottom: 50px; /* Position 50px from the bottom */
+    width: 260px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    position: fixed;
+    overflow-y: auto;
+    z-index: 999;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+    transform: translateX(100%); /* Initially hidden */
+    transition: transform 0.3s ease-in-out; /* Smooth transition for sliding */
+}
+
+#rightSidebar.open {
+    transform: translateX(0); /* Slide in when open */
+}
+
+/* Button to toggle right sidebar */
+#toggleRightSidebar {
+    position: fixed;
+    top: 50%;
+    right: 0; /* Position near the right edge of the screen */
+    transform: translateY(-50%); /* Center vertically */
+    z-index: 1001; 
+    background-color: #007bff;
+    color: white;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#toggleRightSidebar::after {
+    content: '<';
+    font-size: 18px;
+}
+
+#toggleRightSidebar.open::after {
+    content: '>';
+}
+
+#toggleRightSidebar:hover {
+    background-color: #0056b3;
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Styling for the image inside the sidebar */
+.sidebar-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Styling for toponym list */
+#toponymList {
+    list-style-type: none;
+    padding: 0;
+    max-height: calc(100vh - 100px); /* Ensure the list is scrollable */
+}
+
+#toponymList li {
+    cursor: pointer;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#toponymList li:hover {
+    background-color: #d3d3d3;
+}
+
+/* Custom marker and popup styles */
+.custom-marker {
+    border: none;
+    background: transparent;
+}
+
+.toponim-label {
+    background: transparent;
+    border: none;
+    color: #333;
+    font-size: 12px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px white;
+}
+
+.label-text {
+    margin-top: 15px;
+    white-space: nowrap;
+}
+
+.toponim-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.toponim-item:hover {
+    background-color: #f5f5f5;
+}
+
+.toponim-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.toponim-type {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.toponim-popup {
+    padding: 10px;
+}
+
+.toponim-popup h3 {
+    margin: 0 0 10px 0;
+    color: #1b2181;
+}
+
+.toponim-popup p {
+    margin: 5px 0;
+    color: #333;
+}
+
+/* Layer control custom styles */
+.leaflet-control-layers {
+    border-radius: 4px !important;
+    background: white !important;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4) !important;
+}
+
+.leaflet-control-layers-toggle {
+    width: 36px !important;
+    height: 36px !important;
+    background-color: white !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+}
+
+.leaflet-control-layers-expanded {
+    padding: 6px 10px 6px 6px !important;
+    max-height: 70vh !important;
+    overflow-y: auto !important;
+    width: 250px !important;
+}
+
+.leaflet-control-layers label {
+    margin-bottom: 5px !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.leaflet-control-layers input[type="radio"],
+.leaflet-control-layers input[type="checkbox"] {
+    margin-right: 5px !important;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    /* Adjust sidebar widths for smaller screens */
+    #leftSidebar, #rightSidebar {
+        width: 200px;
+        font-size: 14px;
+    }
+
+    /* Map and sidebar adjust */
+    #map {
+        height: 70%;
+        width: calc(100% - 200px); /* Adjust width to account for left sidebar */
+        margin-left: 200px; /* Offset map to the right */
+    }
+
+    /* Make sure the sidebars stack on top of the map on small screens */
+    #leftSidebar, #rightSidebar {
+        position: fixed;
+        z-index: 999;
+        top: 0;
+        height: 100%;
+        overflow-y: auto;
+    }
+
+    #leftSidebar {
+        left: 0;
+    }
+
+    #rightSidebar {
+        right: 0;
+    }
+
+    /* Make the map take less space */
+    #map {
+        height: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Adjust for very small screens */
+    #leftSidebar, #rightSidebar {
+        width: 150px;
+        font-size: 12px;
+    }
+
+    #toponymList li {
+        font-size: 12px;
+    }
+
+    /* Map's height on mobile */
+    #map {
+        height: 100%;
+        width: calc(100% - 150px); /* Adjust width to account for left sidebar */
+        margin-left: 150px; /* Offset map to the right */
+    }
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+/* Marker stillarini o'zgartirish */
+.leaflet-div-icon {
+    background: none !important;
+    border: none !important;
+}
+
+.leaflet-marker-icon {
+    background: none !important;
+    border: none !important;
+}
+
+.leaflet-label-icon {
+    background: none !important;
+    border: none !important;
+}.search-container {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.search-input {
+    width: 80%;
+    padding: 8px 30px 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.clear-search {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    padding: 5px;
+    display: none;
+}
+
+.clear-search:hover {
+    color: #666;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #1b2181;
+}
+
+#toponymList {
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .search-input {
+        font-size: 16px;
+        padding: 10px 35px 10px 12px;
+    }
+}
+
