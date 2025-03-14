@@ -948,7 +948,7 @@
         }
 
         try {
-            const response = await fetch(`http://localhost:8000/api/search?q=${searchText}&region=${region}`);
+            const response = await fetch(`https://toponim-uz.onrender.com/api/search?q=${searchText}&region=${region}`);
             if (!response.ok) {
                 throw new Error('Qidiruv xatosi');
             }

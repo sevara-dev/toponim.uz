@@ -1,5 +1,5 @@
 // API URL
-const API_URL = 'http://localhost:8000';
+const API_URL = 'https://toponim-uz.onrender.com';
 let token = localStorage.getItem('token');
 
 // Agar token yo'q bo'lsa, login sahifasiga yo'naltirish

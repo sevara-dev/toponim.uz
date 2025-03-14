@@ -6,6 +6,7 @@ set -o errexit
 pip install -r requirements.txt
 
 # Create database tables
+cd /opt/render/project/src/backend/app
 python -c "from database import engine; from models import Base; Base.metadata.create_all(bind=engine)"
 
 # Make sure the script is executable
