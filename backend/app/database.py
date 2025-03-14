@@ -16,12 +16,23 @@ DATABASE_URL = os.getenv(
 if DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
+# SSL sertifikatini tekshirmasdan ulanish
+connect_args = {
+    "sslmode": "require",
+    "connect_timeout": 30,
+    "keepalives": 1,
+    "keepalives_idle": 30,
+    "keepalives_interval": 10,
+    "keepalives_count": 5
+}
+
 engine = create_engine(
     DATABASE_URL,
-    connect_args={
-        "sslmode": "require",
-        "connect_timeout": 60
-    }
+    connect_args=connect_args,
+    pool_pre_ping=True,
+    pool_recycle=300,
+    pool_size=5,
+    max_overflow=10
 )
 
 # SessionLocal klassi yaratish
