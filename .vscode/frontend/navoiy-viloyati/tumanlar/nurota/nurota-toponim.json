@@ -1,0 +1,110 @@
+[
+    {
+        "name": "Nurota",
+        "type": "Shahar",
+        "coordinates": [40.5627799, 65.6903621],
+        "established": "1900",
+        "previousName": "Buloq 1",
+        "meaning": "The name means 'Spring of Water'"
+    },
+    {
+        "name": "Temurqovuq",
+        "type": "Shaharcha",
+        "coordinates": [40.7253858, 66.4148142],
+        "established": "1932",
+        "previousName": "Old Temur",
+        "meaning": "Named after the founder, Temur"
+    },
+    {
+        "name": "Yangibino",
+        "type": "Shaharcha",
+        "coordinates": [40.5431926, 65.862901],
+        "established": "1950",
+        "previousName": "Bino 2",
+        "meaning": "The name means 'New Building'"
+    },
+    {
+        "name": "Qizilcha",
+        "type": "Shaharcha",
+        "coordinates": [40.7306478, 66.1065372],
+        "established": "1910",
+        "previousName": "Red Village",
+        "meaning": "The name means 'Red Village'"
+    },
+    {
+        "name": "G‘ozg‘on",
+        "type": "Qishloq",
+        "coordinates": [40.5894213, 65.4939992],
+        "established": "1890",
+        "previousName": "Go‘zoq",
+        "meaning": "The name means 'Goose Village'"
+    },
+    {
+        "name": "Dehibaland",
+        "type": "Qishloq",
+        "coordinates": [40.5087148, 65.5666168],
+        "established": "1920",
+        "previousName": "Dehi Village",
+        "meaning": "The name means 'Village of Dehi'"
+    },
+    {
+        "name": "Sentob",
+        "type": "Qishloq",
+        "coordinates": [40.6062358, 66.6718859],
+        "established": "1885",
+        "previousName": "Sentov",
+        "meaning": "The name means 'Place of Peace'"
+    },
+  
+    {
+        "name": "Qadoq",
+        "type": "Aholi punkti",
+        "coordinates": [40.39564515, 66.13213281820205],
+        "established": "1925",
+        "previousName": "Qadoq Village",
+        "meaning": "The name means 'Small Fortress'"
+    },
+    {
+        "name": "Qo‘ziboyquduq",
+        "type": "Aholi punkti",
+        "coordinates": [40.8250235, 66.5418862],
+        "established": "1970",
+        "previousName": "Qo‘ziboy Village",
+        "meaning": "The name means 'Well of the Strong Man'"
+    },
+    {
+        "name": "Chuqurquduq",
+        "type": "Aholi punkti",
+        "coordinates": [40.8202646, 66.6395896],
+        "established": "1980",
+        "previousName": "Deep Well",
+        "meaning": "The name means 'Deep Well'"
+    },
+    {
+        "name": "Sumbuloq",
+        "type": "Aholi punkti",
+        "coordinates": [40.6640245, 66.6183216],
+        "established": "1990",
+        "previousName": "Sumbo Spring",
+        "meaning": "The name means 'Spring of Sunflowers'"
+    },
+   
+    {
+        "name": "Tikonli",
+        "type": "Aholi punkti",
+        "coordinates": [11.7576404, 1.6684145],
+        "established": "2010",
+        "previousName": "Tiko",
+        "meaning": "The name means 'Tiny Stream'"
+    },
+
+    {
+        "name": "Marmarobod",
+        "type": "Aholi punkti",
+        "coordinates": [40.5704789, 65.46134831663535],
+        "established": "1915",
+        "previousName": "Marmara Village",
+        "meaning": "The name means 'Jewel Mountain'"
+    }
+  
+]

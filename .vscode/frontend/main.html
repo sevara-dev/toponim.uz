@@ -1,0 +1,1024 @@
+<!doctype html>
+<html class="no-js" lang="uz">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>toponim.uz</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/slicknav.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/animated-headline.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/themify-icons.css">
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+    .search-results {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+        max-width: 800px;
+        width: 90%;
+        max-height: 80vh;
+        overflow-y: auto;
+        z-index: 1000;
+    }
+
+    .search-results-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: 999;
+        display: none;
+    }
+
+    .search-results h3 {
+        color: #1b2181;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .close-results {
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: #666;
+        transition: color 0.3s ease;
+    }
+
+    .close-results:hover {
+        color: #1b2181;
+    }
+
+    .result-item {
+        padding: 20px;
+        border-bottom: 1px solid #eee;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .result-item:last-child {
+        border-bottom: none;
+    }
+
+    .result-item:hover {
+        background-color: #f8f9fa;
+        transform: translateX(10px);
+    }
+
+    .result-item h4 {
+        color: #1b2181;
+        margin: 0 0 10px 0;
+        font-size: 18px;
+    }
+
+    .result-item p {
+        color: #666;
+        margin: 5px 0;
+        font-size: 14px;
+    }
+
+    .text-center {
+        text-align: center;
+        color: #666;
+        padding: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .search-results {
+            width: 95%;
+            padding: 20px;
+        }
+
+        .result-item {
+            padding: 15px;
+        }
+
+        .result-item h4 {
+            font-size: 16px;
+        }
+
+        .result-item:hover {
+            transform: translateX(5px);
+        }
+    }
+
+    /* Form Style Slider */
+    .search-box {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        border-radius: 8px;
+        background: rgba(255,255,255,0.2);
+        padding: 14px 16px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .input-form {
+        width: 44%;
+        overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+        .input-form {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+    }
+
+    .input-form input {
+        height: 60px;
+        width: 100%;
+        color: #140C40;
+        font-size: 17px;
+        font-weight: 400;
+        padding: 9px 33px 9px 24px;
+        border: none;
+        border-radius: 6px;
+    }
+
+    .input-form input::placeholder {
+        color: #140C40;
+    }
+
+    .select-form {
+        width: 33%;
+    }
+
+    @media (max-width: 768px) {
+        .select-form {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+    }
+
+    .select-form .nice-select {
+        width: 100%;
+        height: 60px;
+        background: #fff;
+        padding: 11px 19px 11px 25px;
+        color: #140C40;
+        line-height: 42px;
+        border: 0;
+        border-radius: 6px;
+        font-size: 17px;
+    }
+
+    .search-form {
+        width: 21%;
+    }
+
+    @media (max-width: 768px) {
+        .search-form {
+            width: 100%;
+        }
+    }
+
+    .search-form button {
+        width: 100%;
+        height: 60px;
+        background: #1b2181;
+        font-size: 20px;
+        line-height: 1;
+        text-align: center;
+        color: #fff;
+        display: block;
+        padding: 15px;
+        border-radius: 6px;
+        text-transform: capitalize;
+        font-family: inherit;
+        line-height: 31px;
+        font-size: 17px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .search-form button:hover {
+        background: #151a61;
+    }
+
+    .search-form button i {
+        color: #fff;
+        padding-right: 10px;
+    }
+    </style>
+</head>
+<body>
+    <!-- ? Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="assets/img/logo/loder.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+    <header>
+        <!-- Header Start -->
+        <div class="header-area header-transparent">
+            <div class="main-header header-sticky">
+                <div class="container-fluid">
+                    <div class="menu-wrapper d-flex align-items-center justify-content-between">
+                        <!-- Logo -->
+                        <div class="logo">
+                            <a href="index.html"><img src="assets/img/logo/logo.png" style="height: 70px; width: 250px;" alt=""></a>
+                        </div>
+                        <!-- Main-menu -->
+                        <div class="main-menu f-right d-none d-lg-block">
+                            <nav>
+                                <ul id="navigation">
+                                    <li><a href="index.html">Asosiy sahifa</a></li>
+                                    <li><a href="news.html">Yangiliklar</a></li> 
+                                    <li><a href="library.html">Kutubxona</a>
+                                        <ul class="submenu">
+                                            <li><a href="maqolalar.html">Maqolalar</a></li>
+                                            <li><a href="listing.html">Kitoblar</a></li> 
+                                        </ul>
+                                    </li>
+                                
+                                    <li><a href="contact.html">Bog'lanish</a></li>
+                                </ul>
+                            </nav>
+                        </div>          
+                        <!-- Header-btn -->
+                        <div class="header-btns d-none d-lg-block f-right">
+                            <a href="admin/login.html" class="mr-40"><i class="ti-user"></i> Kirish</a>
+                            <a href="register.html" class="btn">Ro'yxatdan o'tish</a>
+                        </div>
+                        <!-- Mobile Menu -->
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+    </header>
+    <main>
+        <!--? Hero Area Start-->
+        <div class="slider-area hero-bg1 hero-overly">
+            <div class="single-slider hero-overly  slider-height1 d-flex align-items-center">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-10 col-lg-10">
+                            <!-- Hero Caption -->
+                            <div class="hero__caption pt-100">
+                                <h1>O'zbekiston toponimlarini tadqiq qilamiz</h1>
+                                <p>Xalqimiz o'tmishini joy nomlari orqali biz bilan o'rganing</p>
+                            </div>
+                            <!--Hero form -->
+                            <form action="#" class="search-box mb-100" id="searchForm">
+                                <div class="input-form">
+                                    <input type="text" id="searchInput" placeholder="Qaysi toponimni qidiryapsiz?">
+                                </div>
+                                <div class="select-form">
+                                    <div class="select-itms">
+                                        <select name="region" id="regionSelect">
+                                            <option value="">Viloyatni tanlang</option>
+                                            <option value="andijon">Andijon viloyati</option>
+                                            <option value="buxoro">Buxoro viloyati</option>
+                                            <option value="fargona">Farg'ona viloyati</option>
+                                            <option value="jizzax">Jizzax viloyati</option>
+                                            <option value="xorazm">Xorazm viloyati</option>
+                                            <option value="namangan">Namangan viloyati</option>
+                                            <option value="navoiy">Navoiy viloyati</option>
+                                            <option value="qashqadaryo">Qashqadaryo viloyati</option>
+                                            <option value="qoraqalpogiston">Qoraqalpog'iston Respublikasi</option>
+                                            <option value="samarqand">Samarqand viloyati</option>
+                                            <option value="sirdaryo">Sirdaryo viloyati</option>
+                                            <option value="surxondaryo">Surxondaryo viloyati</option>
+                                            <option value="toshkent">Toshkent viloyati</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            
+                                <div class="search-form">
+                                    <button type="submit">
+                                        <i class="ti-search"></i> Qidirish
+                                    </button>
+                                </div>	
+                            </form>
+                            <div class="search-results-overlay" id="searchOverlay"></div>
+                            <div id="searchResults" class="search-results" style="display: none;">
+                                <h3>
+                                    Qidiruv natijalari
+                                    <button class="close-results" id="closeResults">&times;</button>
+                                </h3>
+                                <div id="resultsList"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Hero Area End-->
+        <!--? Ancient cities Start 01-->
+        <div class="popular-location border-bottom section-padding40">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- Section Tittle -->
+                        <div class="section-tittle text-center mb-80">
+                            <h2>Qadimiy shaharlar toponimiyasi</h2>
+                            <p>Shahar nomlarinig kelib chiqish tarixi, etimologiyasi va joylashuvi.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="single-location mb-30">
+                            <div class="location-img">
+                                <img src="assets/img/gallery/samarkand.jpg" alt="">
+                            </div>
+                            <div class="location-details">
+                                <p>Samarqand</p>
+                                <a href="#" class="location-btn">65 <i class="ti-plus"></i> toponim</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="single-location mb-30">
+                            <div class="location-img">
+                                <img src="assets/img/gallery/kokand.jpg" alt="">
+                            </div>
+                            <div class="location-details">
+                                <p>Qo'qon</p>
+                                <a href="#" class="location-btn">60 <i class="ti-plus"></i> toponim</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-location mb-30">
+                            <div class="location-img">
+                                <img src="assets/img/gallery/buxara.jpg" alt="">
+                            </div>
+                            <div class="location-details">
+                                <p>Buxoro</p>
+                                <a href="#" class="location-btn">50 <i class="ti-plus"></i> toponim</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-location mb-30">
+                            <div class="location-img">
+                                <img src="assets/img/gallery/khiva.jpg" alt="">
+                            </div>
+                            <div class="location-details">
+                                <p>Xiva</p>
+                                <a href="#" class="location-btn">28 <i class="ti-plus"></i> toponim</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-location mb-30">
+                            <div class="location-img">
+                                <img src="assets/img/gallery/tashkent.jpg" alt="">
+                            </div>
+                            <div class="location-details">
+                                <p>Toshkent</p>
+                                <a href="#" class="location-btn">9 <i class="ti-plus"></i> toponim</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Ancient cities End -->
+        <!--? Regions Start -->
+        <div class="popular-directorya-area  border-bottom section-padding40 fix">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- Section Tittle -->
+                        <div class="section-tittle text-center mb-80">
+                            <h2>Hududlar kesimida joy nomlari</h2>
+                            <p>Viloyatlar va undagi tumanlarning toponimlari, interaktiv xaritalar, lug'atlar.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="directory-active">
+                    <!-- Single -->
+                    <div class="properties pb-20">
+                        <div class="properties__card">
+                            <div class="properties__img overlay1">
+                                <a href="#"><img src="assets/img/gallery/regions/qoraqalpog'iston.webp" alt=""></a>
+                                <div class="img-text">
+                                    
+                                    <span>xarita</span>
+                                </div>
+                            </div>
+                            <div class="properties__caption">
+                                <h3><a href="#">Qoraqalpog'iston Resoublikasi</a></h3>
+                                <p>Interaktiv xarita, toponimik lug'atlar</p>
+                            </div>
+                            <div class="properties__footer d-flex justify-content-between align-items-center">
+                                <div class="restaurant-name">
+                                    
+                                    <h3>Tumanlar kesimida</h3>
+                                </div>
+                                <div class="heart">
+                                    <img src="assets/img/gallery/heart1.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single -->
+                    <div class="properties pb-20">
+                        <div class="properties__card">
+                            <div class="properties__img overlay1">
+                                <a href="#"><img src="assets/img/gallery/regions/andijon.webp" alt=""></a>
+                                <div class="img-text">
+                                    
+                                    <span>xarita</span>
+                                </div>
+                                
+                            </div>
+                            <div class="properties__caption">
+                                <h3><a href="#">Andijon Viloyati</a></h3>
+                                <p>Interaktiv xarita, toponimik lug'atlar</p>
+                            </div>
+                            <div class="properties__footer d-flex justify-content-between align-items-center">
+                                <div class="restaurant-name">
+                                    
+                                    <h3>Tumanlar kesimida</h3>
+                                </div>
+                                <div class="heart">
+                                    <img src="assets/img/gallery/heart1.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single -->
+                    <div class="properties pb-20">
+                        <div class="properties__card">
+                            <div class="properties__img overlay1">
+                                <a href="#"><img src="assets/img/gallery/regions/buxoro.webp" alt=""></a>
+                                <div class="img-text">
+                                    <span ></span>
+                                    <span>xarita</span>
+                                </div>
+                                
+                            </div>
+                            <div class="properties__caption">
+                                <h3><a href="#">Buxoro viloyati</a></h3>
+                                <p>Interaktiv xarita, toponimik lug'atlar</p>
+                            </div>
+                            <div class="properties__footer d-flex justify-content-between align-items-center">
+                                <div class="restaurant-name">
+                                    
+                                    <h3>Tumanlar kesimida</h3>
+                                </div>
+                                <div class="heart">
+                                    <img src="assets/img/gallery/heart1.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single -->
+                    <div class="properties pb-20">
+                        <div class="properties__card">
+                            <div class="properties__img overlay1">
+                                <a href="#"><img src="assets/img/gallery/regions/jizzax.webp" alt=""></a>
+                                <div class="img-text">
+                                    
+                                    <span>xarita</span>
+                                </div>
+                                
+                            </div>
+                            <div class="properties__caption">
+                                <h3><a href="#">Jizzax viloyati</a></h3>
+                                <p>Interaktiv xarita, toponimik lug'atlar</p>
+                            </div>
+                            <div class="properties__footer d-flex justify-content-between align-items-center">
+                                <div class="-name">
+                                    
+                                    <h3>Tumanlar kesimida</h3>
+                                </div>
+                                <div class="heart">
+                                    <img src="assets/img/gallery/heart1.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Single -->
+                     <div class="properties pb-20">
+                        <div class="properties__card">
+                            <div class="properties__img overlay1">
+                                <a href="#"><img src="assets/img/gallery/regions/qashqadaryo.webp" alt=""></a>
+                                <div class="img-text">
+                                    
+                                    <span>xarita</span>
+                                </div>
+                            </div>
+                            <div class="properties__caption">
+                                <h3><a href="#">Qashqadaryo viloyati</a></h3>
+                                <p>Interaktiv xarita, toponimik lug'atlar</p>
+                            </div>
+                            <div class="properties__footer d-flex justify-content-between align-items-center">
+                                <div class="restaurant-name">
+                                    
+                                    <h3>Tumanlar kesimida</h3>
+                                </div>
+                                <div class="heart">
+                                    <img src="assets/img/gallery/heart1.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Single -->
+                     <div class="properties pb-20">
+                        <div class="properties__card">
+                            <div class="properties__img overlay1">
+                                <a href="#"><img src="assets/img/gallery/regions/navoiy.webp" alt=""></a>
+                                <div class="img-text">
+                                    
+                                    <span>xarita</span>
+                                </div>
+                            </div>
+                            <div class="properties__caption">
+                                <h3><a href="navoiy-viloyati.html">Navoiy viloyati</a></h3>
+                                <p>Interaktiv xarita, toponimik lug'atlar</p>
+                            </div>
+                            <div class="properties__footer d-flex justify-content-between align-items-center">
+                                <div class="restaurant-name">
+                                    
+                                    <h3>Tumanlar kesimida</h3>
+                                </div>
+                                <div class="heart">
+                                    <img src="assets/img/gallery/heart1.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Single -->
+                     <div class="properties pb-20">
+                        <div class="properties__card">
+                            <div class="properties__img overlay1">
+                                <a href="#"><img src="assets/img/gallery/regions/namangan.webp" alt=""></a>
+                                <div class="img-text">
+                                    
+                                    <span>xarita</span>
+                                </div>
+                            </div>
+                            <div class="properties__caption">
+                                <h3><a href="#">Namangan viloyati</a></h3>
+                                <p>Interaktiv xarita, toponimik lug'atlar</p>
+                            </div>
+                            <div class="properties__footer d-flex justify-content-between align-items-center">
+                                <div class="restaurant-name">
+                                    
+                                    <h3>Tumanlar kesimida</h3>
+                                </div>
+                                <div class="heart">
+                                    <img src="assets/img/gallery/heart1.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Single -->
+                     <div class="properties pb-20">
+                        <div class="properties__card">
+                            <div class="properties__img overlay1">
+                                <a href="#"><img src="assets/img/gallery/regions/samarkand.webp" alt=""></a>
+                                <div class="img-text">
+                                    
+                                    <span>xarita</span>
+                                </div>
+                            </div>
+                            <div class="properties__caption">
+                                <h3><a href="#">Samarqand viloyati</a></h3>
+                                <p>Interaktiv xarita, toponimik lug'atlar</p>
+                            </div>
+                            <div class="properties__footer d-flex justify-content-between align-items-center">
+                                <div class="restaurant-name">
+                                    
+                                    <h3>Tumanlar kesimida</h3>
+                                </div>
+                                <div class="heart">
+                                    <img src="assets/img/gallery/heart1.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Single -->
+                     <div class="properties pb-20">
+                        <div class="properties__card">
+                            <div class="properties__img overlay1">
+                                <a href="#"><img src="assets/img/gallery/regions/surxondaryo.webp" alt=""></a>
+                                <div class="img-text">
+                                    
+                                    <span>xarita</span>
+                                </div>
+                            </div>
+                            <div class="properties__caption">
+                                <h3><a href="#">Surxondaryo viloyati</a></h3>
+                                <p>Interaktiv xarita, toponimik lug'atlar</p>
+                            </div>
+                            <div class="properties__footer d-flex justify-content-between align-items-center">
+                                <div class="restaurant-name">
+                                    
+                                    <h3>Tumanlar kesimida</h3>
+                                </div>
+                                <div class="heart">
+                                    <img src="assets/img/gallery/heart1.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Single -->
+                     <div class="properties pb-20">
+                        <div class="properties__card">
+                            <div class="properties__img overlay1">
+                                <a href="#"><img src="assets/img/gallery/regions/sirdaryo.webp" alt=""></a>
+                                <div class="img-text">
+                                    
+                                    <span>xarita</span>
+                                </div>
+                            </div>
+                            <div class="properties__caption">
+                                <h3><a href="#">Sirdaryo viloyati</a></h3>
+                                <p>Interaktiv xarita, toponimik lug'atlar</p>
+                            </div>
+                            <div class="properties__footer d-flex justify-content-between align-items-center">
+                                <div class="restaurant-name">
+                                    
+                                    <h3>Tumanlar kesimida</h3>
+                                </div>
+                                <div class="heart">
+                                    <img src="assets/img/gallery/heart1.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Single -->
+                     <div class="properties pb-20">
+                        <div class="properties__card">
+                            <div class="properties__img overlay1">
+                                <a href="#"><img src="assets/img/gallery/regions/xorazm.webp" alt=""></a>
+                                <div class="img-text">
+                                    
+                                    <span>xarita</span>
+                                </div>
+                            </div>
+                            <div class="properties__caption">
+                                <h3><a href="#">Xorazm viloyati</a></h3>
+                                <p>Interaktiv xarita, toponimik lug'atlar</p>
+                            </div>
+                            <div class="properties__footer d-flex justify-content-between align-items-center">
+                                <div class="restaurant-name">
+                                    
+                                    <h3>Tumanlar kesimida</h3>
+                                </div>
+                                <div class="heart">
+                                    <img src="assets/img/gallery/heart1.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Single -->
+                     <div class="properties pb-20">
+                        <div class="properties__card">
+                            <div class="properties__img overlay1">
+                                <a href="#"><img src="assets/img/gallery/regions/fergana.webp" alt=""></a>
+                                <div class="img-text">
+                                    
+                                    <span>xarita</span>
+                                </div>
+                            </div>
+                            <div class="properties__caption">
+                                <h3><a href="#">Farg'ona viloyati</a></h3>
+                                <p>Interaktiv xarita, toponimik lug'atlar</p>
+                            </div>
+                            <div class="properties__footer d-flex justify-content-between align-items-center">
+                                <div class="restaurant-name">
+                                    
+                                    <h3>Tumanlar kesimida</h3>
+                                </div>
+                                <div class="heart">
+                                    <img src="assets/img/gallery/heart1.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Single -->
+                     <div class="properties pb-20">
+                        <div class="properties__card">
+                            <div class="properties__img overlay1">
+                                <a href="#"><img src="assets/img/gallery/regions/tashkent.webp" alt=""></a>
+                                <div class="img-text">
+                                    
+                                    <span>xarita</span>
+                                </div>
+                            </div>
+                            <div class="properties__caption">
+                                <h3><a href="#">Toshkent viloyati</a></h3>
+                                <p>Interaktiv xarita, toponimik lug'atlar</p>
+                            </div>
+                            <div class="properties__footer d-flex justify-content-between align-items-center">
+                                <div class="restaurant-name">
+                                    
+                                    <h3>Tumanlar kesimida</h3>
+                                </div>
+                                <div class="heart">
+                                    <img src="assets/img/gallery/heart1.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--? Regions End -->
+        <!--? Want To work 01-->
+        <section class="wantToWork-area">
+            <div class="container">
+                <div class="wants-wrapper w-padding2">
+                    <div class="row align-items-center justify-content-between">
+                        <div class="col-xl-7 col-lg-9 col-md-8">
+                            <div class="wantToWork-caption wantToWork-caption2">
+                                <h2>O'z hissangizni qo'shing</h2>
+                                <p>Interaktiv xarita, toponimik lug'atlar, maqolalar</p>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-md-4">
+                            <a href="#" class="btn f-right sm-left">Ro'yhatdan o'tish</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Want To work End -->
+        <!--Hissa Start -->
+        <div class="our-services  border-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class=" col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-services mb-30">
+                            <div class="services-ion">
+                                <span>01</span>
+                            </div>
+                            <div class="services-cap">
+                                <h5><a href="#">Maqolalar</a></h5>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam nisi provident placeat eum quod temporibus.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-services mb-30">
+                            <div class="services-ion">
+                                <span>02</span>
+                            </div>
+                            <div class="services-cap">
+                                <h5><a href="#">Loyihalar</a></h5>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam nisi provident placeat eum quod temporibus.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-services mb-30">
+                            <div class="services-ion">
+                                <span>03</span>
+                            </div>
+                            <div class="services-cap">
+                                <h5><a href="#">Interaktiv xaritalar</a></h5>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam nisi provident placeat eum quod temporibus.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Hissa End -->
+       
+        <!--? Want To work 02-->
+        <section class="wantToWork-area">
+            <div class="container">
+                <div class="wants-wrapper w-padding2">
+                    <div class="row justify-content-between">
+                        <div class="col-xl-8 col-lg-8 col-md-7">
+                            <div class="wantToWork-caption wantToWork-caption2">
+                                <img style="height: 90px; width: 350px;" src="assets/img/logo/logo2_footer.png" alt="" class="mb-20">
+                                <p>toponim.uz - O'zbekistonning joy nomlari va toponimika tarixi bo'yicha ma'lumotlarni biz bilan kashf eting. 
+                                    Saytimiz orqali turli hududlar va shaharlarning toponimik xaritalari, toponimikaga oid ilmiy tadqiqotlar va kitoblar bilan tanishing.</p>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-5">
+                            <div class="footer-social f-right sm-left">
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Want To work End -->
+        <!--? Want To work 01-->
+        <section class="wantToWork-area">
+            <div class="container">
+                <div class="wants-wrapper">
+                    <div class="row align-items-center justify-content-between">
+                        <div class="col-xl-7 col-lg-9 col-md-8">
+                            <div class="wantToWork-caption wantToWork-caption2">
+                                <div class="main-menu2">
+                                   <nav >
+                                        <ul>
+                                            <li><a href="index.html">Asosiy sahifa</a></li>
+                                            <li><a href="news.html">Yangiliklar</a></li> 
+                                            <li><a href="library.html">Kutubxona</a></li>
+                                            <li><a href="contact.html">Bog'lanish</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Want To work End -->
+    </main>
+    <footer>
+        <div class="footer-wrapper pt-30">
+            <!-- footer-bottom -->
+            <div class="footer-bottom-area">
+                <div class="container">
+                    <div class="footer-border">
+                        <div class="row d-flex justify-content-between align-items-center">
+                            <div class="col-xl-10 col-lg-9 ">
+                                <div class="footer-copy-right">
+                                   <center> <p style="margin-left: 200px;">
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved<i class="fa fa-heart" aria-hidden="true"></i>
+  </p></center>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll Up -->
+    <div id="back-top" >
+        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+    </div>
+
+    <!-- JS here -->
+
+    <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
+    <!-- Jquery, Popper, Bootstrap -->
+    <script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="./assets/js/popper.min.js"></script>
+    <script src="./assets/js/bootstrap.min.js"></script>
+    <!-- Jquery Mobile Menu -->
+    <script src="./assets/js/jquery.slicknav.min.js"></script>
+
+    <!-- Jquery Slick , Owl-Carousel Plugins -->
+    <script src="./assets/js/owl.carousel.min.js"></script>
+    <script src="./assets/js/slick.min.js"></script>
+    <!-- One Page, Animated-HeadLin -->
+    <script src="./assets/js/wow.min.js"></script>
+    <script src="./assets/js/animated.headline.js"></script>
+    <script src="./assets/js/jquery.magnific-popup.js"></script>
+
+    <!-- Date Picker -->
+    <script src="./assets/js/gijgo.min.js"></script>
+    <!-- Nice-select, sticky -->
+    <script src="./assets/js/jquery.nice-select.min.js"></script>
+    <script src="./assets/js/jquery.sticky.js"></script>
+    <!-- Progress -->
+    <script src="./assets/js/jquery.barfiller.js"></script>
+    
+    <!-- counter , waypoint,Hover Direction -->
+    <script src="./assets/js/jquery.counterup.min.js"></script>
+    <script src="./assets/js/waypoints.min.js"></script>
+    <script src="./assets/js/jquery.countdown.min.js"></script>
+    <script src="./assets/js/hover-direction-snake.min.js"></script>
+
+    <!-- contact js -->
+    <script src="./assets/js/contact.js"></script>
+    <script src="./assets/js/jquery.form.js"></script>
+    <script src="./assets/js/jquery.validate.min.js"></script>
+    <script src="./assets/js/mail-script.js"></script>
+    <script src="./assets/js/jquery.ajaxchimp.min.js"></script>
+    
+    <!-- Jquery Plugins, main Jquery -->	
+    <script src="./assets/js/plugins.js"></script>
+    <script src="./assets/js/main.js"></script>
+
+    <script>
+    document.getElementById('searchForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const searchText = document.getElementById('searchInput').value;
+        const region = document.getElementById('regionSelect').value;
+        
+        if (!searchText && !region) {
+            alert('Iltimos, qidiruv so\'zini yoki viloyatni tanlang');
+            return;
+        }
+
+        try {
+            const response = await fetch(`https://toponim-uz.onrender.com/api/search?q=${searchText}&region=${region}`);
+            if (!response.ok) {
+                throw new Error('Qidiruv xatosi');
+            }
+            const results = await response.json();
+            displayResults(results);
+        } catch (error) {
+            console.error('Qidiruv xatosi:', error);
+            alert('Qidiruv jarayonida xatolik yuz berdi');
+        }
+    });
+
+    function displayResults(results) {
+        const resultsContainer = document.getElementById('searchResults');
+        const resultsList = document.getElementById('resultsList');
+        const overlay = document.getElementById('searchOverlay');
+        
+        resultsList.innerHTML = '';
+
+        if (results.length === 0) {
+            resultsList.innerHTML = '<p class="text-center">Hech narsa topilmadi</p>';
+        } else {
+            results.forEach(result => {
+                const resultItem = document.createElement('div');
+                resultItem.className = 'result-item';
+                resultItem.innerHTML = `
+                    <h4>${result.name}</h4>
+                    <p><strong>Turi:</strong> ${result.type}</p>
+                    <p><strong>Tuman:</strong> ${result.district}</p>
+                    <p><strong>Viloyat:</strong> ${result.region}</p>
+                    ${result.meaning ? `<p><strong>Ma'nosi:</strong> ${result.meaning}</p>` : ''}
+                    ${result.established ? `<p><strong>Tashkil topgan yili:</strong> ${result.established}</p>` : ''}
+                    ${result.previous_name ? `<p><strong>Oldingi nomi:</strong> ${result.previous_name}</p>` : ''}
+                `;
+                
+                resultItem.addEventListener('click', () => {
+                    if (result.district === 'Nurota') {
+                        window.location.href = 'navoiy-viloyati/tumanlar/nurota/nurota.html?toponim=' + result.id;
+                    } else {
+                        window.location.href = `navoiy-viloyati.html?toponim=${result.id}`;
+                    }
+                });
+                
+                resultsList.appendChild(resultItem);
+            });
+        }
+
+        overlay.style.display = 'block';
+        resultsContainer.style.display = 'block';
+    }
+
+    // Yopish tugmasi funksionalligi
+    document.getElementById('closeResults').addEventListener('click', () => {
+        document.getElementById('searchResults').style.display = 'none';
+        document.getElementById('searchOverlay').style.display = 'none';
+    });
+
+    // Overlay bosilganda yopish
+    document.getElementById('searchOverlay').addEventListener('click', () => {
+        document.getElementById('searchResults').style.display = 'none';
+        document.getElementById('searchOverlay').style.display = 'none';
+    });
+
+    // Escape tugmasi bosilganda yopish
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            document.getElementById('searchResults').style.display = 'none';
+            document.getElementById('searchOverlay').style.display = 'none';
+        }
+    });
+    </script>
+
+</body>
+</html>

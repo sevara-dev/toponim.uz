@@ -8,7 +8,7 @@ import time
 load_dotenv()
 
 # PostgreSQL ma'lumotlar bazasi uchun URL
-DATABASE_URL = os.getenv(
+DATABASE_URL = os.environ.get(
     "DATABASE_URL",
     "postgresql://toponim:toponim@dpg-cva4e60fnako73funfog-a.oregon-postgres.render.com/toponim_db"
 )
