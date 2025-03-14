@@ -16,7 +16,13 @@ DATABASE_URL = os.getenv(
 if DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
-engine = create_engine(DATABASE_URL)
+engine = create_engine(
+    DATABASE_URL,
+    connect_args={
+        "sslmode": "require",
+        "connect_timeout": 60
+    }
+)
 
 # SessionLocal klassi yaratish
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

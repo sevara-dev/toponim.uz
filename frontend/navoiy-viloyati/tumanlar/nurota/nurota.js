@@ -127,7 +127,11 @@ fetch('nurota-boundary.json')
 // Load toponyms from API
 async function loadToponyms() {
     try {
-        const response = await fetch('http://localhost:8000/districts/1/toponims/');
+        const response = await fetch('https://toponim-uz.onrender.com/districts/1/toponims/', {
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
         if (!response.ok) throw new Error('Toponimlarni yuklashda xatolik');
         
         const toponyms = await response.json();

@@ -106,7 +106,8 @@
                 const response = await fetch(`${API_URL}/token`, {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'Accept': 'application/json'
                     },
                     body: new URLSearchParams(data)
                 });
@@ -121,6 +122,7 @@
                     document.getElementById('errorMessage').style.display = 'block';
                 }
             } catch (error) {
+                console.error('Xatolik:', error);
                 document.getElementById('errorMessage').textContent = 'Serverga ulanishda xatolik yuz berdi';
                 document.getElementById('errorMessage').style.display = 'block';
             }

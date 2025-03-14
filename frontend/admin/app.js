@@ -12,7 +12,15 @@ async function fetchAPI(endpoint, options = {}) {
     if (token) {
         options.headers = {
             ...options.headers,
-            'Authorization': `Bearer ${token}`
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        };
+    } else {
+        options.headers = {
+            ...options.headers,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
         };
     }
     
