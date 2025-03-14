@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from sqlalchemy import or_
 from typing import List
+import time
 
 import crud
 import models
@@ -11,7 +12,21 @@ import schemas
 import auth
 from database import SessionLocal, engine
 
-models.Base.metadata.create_all(bind=engine)
+# Ma'lumotlar bazasi jadvallarini yaratish
+def init_db(retries=5, delay=5):
+    for attempt in range(retries):
+        try:
+            models.Base.metadata.create_all(bind=engine)
+            print("Database tables created successfully")
+            return
+        except Exception as e:
+            if attempt == retries - 1:
+                raise e
+            print(f"Failed to create tables (attempt {attempt + 1}/{retries}). Retrying in {delay} seconds...")
+            time.sleep(delay)
+
+# Ma'lumotlar bazasi jadvallarini yaratishga urinish
+init_db()
 
 app = FastAPI(title="Toponim.uz API")
 
