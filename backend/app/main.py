@@ -33,7 +33,7 @@ app = FastAPI(title="Toponim.uz API")
 # Ensure CORS settings allow frontend communication
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "https://toponim-uz.onrender.com"],
+    allow_origins=["http://localhost:3000", "https://toponim-uz.onrender.com", "https://toponim-uz-1.onrender.com"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
