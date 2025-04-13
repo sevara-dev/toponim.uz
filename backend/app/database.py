@@ -4,14 +4,18 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
 import time
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 load_dotenv()
 
 # PostgreSQL ma'lumotlar bazasi uchun URL
-DATABASE_URL = os.environ.get(
-    "DATABASE_URL",
-    "postgresql://toponim:toponim@dpg-cva4e60fnako73funfog-a.oregon-postgres.render.com/toponim_db"
-)
+DATABASE_URL = os.getenv("DATABASE_URL", "").strip()  # Strip whitespace or newline
+
+if not DATABASE_URL:
+    raise ValueError("DATABASE_URL environment variable is not set or invalid")
 
 # SQLAlchemy engine yaratish
 if DATABASE_URL.startswith("postgres://"):
@@ -43,9 +47,11 @@ def create_db_engine(retries=5, delay=5):
             # Test connection
             with engine.connect() as conn:
                 conn.execute("SELECT 1")
+            logger.info("Database connection established successfully.")
             return engine
         except Exception as e:
             if attempt == retries - 1:
+                logger.error("Failed to connect to the database.", exc_info=True)
                 raise e
             print(f"Database connection attempt {attempt + 1} failed. Retrying in {delay} seconds...")
             time.sleep(delay)
@@ -69,4 +75,4 @@ def checkin(dbapi_connection, connection_record):
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 # Base klass yaratish
-Base = declarative_base() 
+Base = declarative_base()

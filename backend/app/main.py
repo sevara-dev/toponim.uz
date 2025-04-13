@@ -30,10 +30,10 @@ init_db()
 
 app = FastAPI(title="Toponim.uz API")
 
-# CORS sozlamalari
+# Ensure CORS settings allow frontend communication
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["http://localhost:3000", "https://toponim-uz.onrender.com"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -272,4 +272,4 @@ def search_toponims(
             "previous_name": toponim.previous_name
         }
         for toponim in results
-    ] 
+    ]

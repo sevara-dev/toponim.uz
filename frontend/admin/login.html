@@ -102,6 +102,11 @@
             const formData = new FormData(e.target);
             const data = Object.fromEntries(formData.entries());
 
+            // Reset error message
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.style.display = 'none';
+            errorMessage.textContent = '';
+
             try {
                 const response = await fetch(`${API_URL}/token`, {
                     method: 'POST',
