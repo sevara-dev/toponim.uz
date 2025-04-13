@@ -23,8 +23,7 @@ if DATABASE_URL.startswith("postgres://"):
 
 # SSL va boshqa ulanish parametrlari
 connect_args = {
-       "sslmode": "verify-full",
-       "sslrootcert": "system",
+       "sslmode": "require",
        "connect_timeout": 30,
        "keepalives": 1,
        "keepalives_idle": 30,
