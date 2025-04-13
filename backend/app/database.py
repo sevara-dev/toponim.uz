@@ -22,15 +22,14 @@ if DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
 # SSL va boshqa ulanish parametrlari
- connect_args = {
+connect_args = {
        "sslmode": "require",
        "sslrootcert": "system",
        "connect_timeout": 30,
        "keepalives": 1,
        "keepalives_idle": 30,
        "keepalives_interval": 10,
-       "keepalives_count": 5
-   }
+       "keepalives_count": 5}
 
 # Engine yaratish
 def create_db_engine(retries=5, delay=5):
