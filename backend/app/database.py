@@ -1,34 +1,36 @@
 import os
-from sqlalchemy import create_engine, event
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
-from dotenv import load_dotenv
 import time
 import logging
+from dotenv import load_dotenv
+from sqlalchemy import create_engine, event, text
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+# .env fayldan o'zgaruvchilarni yuklash
 load_dotenv()
 
 # PostgreSQL ma'lumotlar bazasi uchun URL
-DATABASE_URL = os.getenv("DATABASE_URL", "").strip()  # Strip whitespace or newline
+DATABASE_URL = os.getenv("DATABASE_URL", "").strip()
 
 if not DATABASE_URL:
     raise ValueError("DATABASE_URL environment variable is not set or invalid")
 
-# SQLAlchemy engine yaratish
+# Agar eski formatda bo‘lsa, to‘g‘rilaymiz
 if DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
 # SSL va boshqa ulanish parametrlari
 connect_args = {
-       "sslmode": "require",
-       "connect_timeout": 30,
-       "keepalives": 1,
-       "keepalives_idle": 30,
-       "keepalives_interval": 10,
-       "keepalives_count": 5}
+    "sslmode": "require",
+    "connect_timeout": 30,
+    "keepalives": 1,
+    "keepalives_idle": 30,
+    "keepalives_interval": 10,
+    "keepalives_count": 5
+}
 
 # Engine yaratish
 def create_db_engine(retries=5, delay=5):
@@ -43,9 +45,9 @@ def create_db_engine(retries=5, delay=5):
                 max_overflow=10,
                 echo=True
             )
-            # Test connection
+            # Ulanishni tekshirish
             with engine.connect() as conn:
-                conn.execute("SELECT 1")
+                conn.execute(text("SELECT 1"))
             logger.info("Database connection established successfully.")
             return engine
         except Exception as e:
@@ -57,7 +59,7 @@ def create_db_engine(retries=5, delay=5):
 
 engine = create_db_engine()
 
-# Connection pool events
+# Ulanish havzasi (pool) uchun hodisalar
 @event.listens_for(engine, "connect")
 def connect(dbapi_connection, connection_record):
     print("New database connection established")
@@ -70,8 +72,8 @@ def checkout(dbapi_connection, connection_record, connection_proxy):
 def checkin(dbapi_connection, connection_record):
     print("Database connection returned to pool")
 
-# SessionLocal klassi yaratish
+# Session yaratish
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-# Base klass yaratish
+# Bazaviy model klassi
 Base = declarative_base()
